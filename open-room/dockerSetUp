@@ -1,0 +1,21 @@
+ http://192.168.99.101:9001/
+ 
+ 
+ /* genera il jar */
+ .\mvnw package 
+ 
+ /* genera docker images  */
+ docker build -f Dockerfile -t open-room .
+ 
+ /* verifica le docker images */
+ docker images
+ 
+ /*run docker images */
+ docker run -p 9001:9001 open-room
+ 
+ /* docker container list */
+ docker container ls
+ 
+ /* stop docker container */
+ docker stop containerID
+ 
