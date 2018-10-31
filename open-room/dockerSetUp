@@ -1,4 +1,4 @@
- http://192.168.99.101:9001/
+ http://192.168.99.100:9001/
  
  
  /* genera il jar */
@@ -19,3 +19,7 @@
  /* stop docker container */
  docker stop containerID
  
+
+ 
+ /* clean maven errors */
+ .\mvnw clean install -U
