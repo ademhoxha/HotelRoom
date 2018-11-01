@@ -1,5 +1,7 @@
  http://192.168.99.100:8761/
  
+  /* clean maven errors */
+ .\mvnw clean install -U
 
  /* genera il jar */
  .\mvnw package 
