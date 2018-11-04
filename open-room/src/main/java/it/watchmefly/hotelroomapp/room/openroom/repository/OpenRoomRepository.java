@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 public interface OpenRoomRepository extends ReactiveMongoRepository<OpenRoom,String>{
 
 	Flux<OpenRoom> findAllfindByRoomNumber(Integer roomNumber);
-	Flux<OpenRoom> findAllByReservationIdOrderByRoomNumber(String reservationId);
+	Flux<OpenRoom> findAllByReservationIdAndHotelIdOrderByRoomNumber(String reservationId,  String hotelId);
 	Flux<OpenRoom> findAllByHotelIdOrderByRoomNumber(String hotelId);
 	
 	/* are the same service  */

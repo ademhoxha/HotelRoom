@@ -21,12 +21,12 @@ public class OpenRoom {
 	private Calendar endDate;
 
 	
-	public OpenRoom(Integer roomNumber, String hotelId, String reservetionId, String password, Calendar startDate,
+	public OpenRoom(Integer roomNumber, String hotelId, String reservationId, String password, Calendar startDate,
 			Calendar endDate) {
 		super();
 		this.roomNumber = roomNumber;
 		this.hotelId = hotelId;
-		this.reservationId = reservetionId;
+		this.reservationId = reservationId;
 		this.password = password;
 		this.startDate = startDate;
 		this.endDate = endDate;
