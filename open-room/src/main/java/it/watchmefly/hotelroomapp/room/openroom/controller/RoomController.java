@@ -2,7 +2,8 @@ package it.watchmefly.hotelroomapp.room.openroom.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,24 +14,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.watchmefly.hotelroomapp.room.openroom.config.BusinessAppConfig;
 import it.watchmefly.hotelroomapp.room.openroom.document.OpenRoom;
-import it.watchmefly.hotelroomapp.room.openroom.repository.OpenRoomRepository;
-import it.watchmefly.hotelroomapp.room.openroom.service.OpenRoomBusiness;
-import it.watchmefly.hotelroomapp.room.openroom.service.impl.OpenRoomBusinessImpl;
+import it.watchmefly.hotelroomapp.room.openroom.service.RoomBusiness;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/room")
 public class RoomController {
 	
-	@Autowired
-	private OpenRoomRepository repository;
-	
+	ApplicationContext ctx = new AnnotationConfigApplicationContext(BusinessAppConfig.class);
 	
 	@PostMapping
 	private Mono<ResponseEntity<OpenRoom>> insertRoom( @RequestBody OpenRoom room){	
-		OpenRoomBusiness business = new OpenRoomBusinessImpl(repository);
-		return business.openRoom(room);
+		return ctx.getBean(RoomBusiness.class).openRoom(room);
 	}
 
 	@GetMapping()
@@ -40,32 +37,22 @@ public class RoomController {
 		room.setHotelId(hotelId);
 		room.setReservationId(reservationId);
 		room.setRoomNumber(new Integer(roomNumber));
-		OpenRoomBusiness business = new OpenRoomBusinessImpl(repository);
-		return business.getRoom(room);
+		return ctx.getBean(RoomBusiness.class).getRoom(room);
 	}
 	
 	@GetMapping("/all")
 	private Mono<ResponseEntity<List<OpenRoom>>> findAllRooms() {
-		OpenRoomBusiness business = new OpenRoomBusinessImpl(repository);
-		return business.getAllRooms();
+		return ctx.getBean(RoomBusiness.class).getAllRooms();
 	}
 	
 	@PutMapping()
 	private Mono<ResponseEntity<List<OpenRoom>>> updateRoom(@RequestBody OpenRoom room){
-		OpenRoomBusiness business = new OpenRoomBusinessImpl(repository);
-		return business.updateRoom(room);
+		return ctx.getBean(RoomBusiness.class).updateRoom(room);
 	}
 	
 	@DeleteMapping()
 	private Mono<ResponseEntity<List<OpenRoom>>> closeRoom(@RequestBody OpenRoom room){
-		OpenRoomBusiness business = new OpenRoomBusinessImpl(repository);
-		return business.closeRoom(room);
+		return ctx.getBean(RoomBusiness.class).closeRoom(room);
 	}
-	
-	/*@GetMapping("/{roomNumber}")
-	private Flux<OpenRoom> find(@PathVariable Integer roomNumber){
-		Function<OpenRoom,OpenRoom> hidePasswordFunc = x -> { x.setPassword(""); return x;};
-		return this.repository.findAllfindByRoomNumber(roomNumber).map(hidePasswordFunc::apply);
-	}*/
 
 }

@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import it.watchmefly.hotelroomapp.room.openroom.document.OpenRoom;
 import reactor.core.publisher.Mono;
 
-public interface OpenRoomBusiness {
+public interface RoomBusiness {
 	
 	// manage single room 
 	Mono<ResponseEntity<OpenRoom>> openRoom(OpenRoom room);
@@ -18,14 +18,4 @@ public interface OpenRoomBusiness {
 	// manage all rooms 
 	Mono<ResponseEntity<List<OpenRoom>>> getAllRooms();
 	Mono<ResponseEntity<List<OpenRoom>>> openMultipleRooms(List<OpenRoom> roomList);
-	
-	// manage hotel rooms 
-	Mono<ResponseEntity<List<OpenRoom>>> getHotelRooms(String hotelId);
-	Mono<ResponseEntity<List<OpenRoom>>> closeHotelsRoom(String hotelId);
-		
-	// manage reservation rooms 
-	Mono<ResponseEntity<List<OpenRoom>>> getReservationRooms(String hotelId, String reservationId);
-	Mono<ResponseEntity<List<OpenRoom>>> closeReservationRooms(String hotelId, String reservationId);
-	
-	
 }
