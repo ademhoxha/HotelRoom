@@ -19,7 +19,7 @@ import it.watchmefly.hotelroomapp.room.openroom.service.ReservationRoomsBusiness
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/reservationrooms")
+@RequestMapping("/reservation/room")
 public class ReservationRoomsController {
 	
 	@Autowired

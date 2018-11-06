@@ -1,0 +1,27 @@
+ http://192.168.99.100:9002/
+ 
+  /* clean maven errors */
+ .\mvnw clean install -U
+ 
+ /* genera il jar */
+ .\mvnw package 
+ 
+ /* genera docker images  */
+ docker build -f Dockerfile -t open-room .
+ 
+ /* verifica le docker images */
+ docker images
+ 
+ /*run docker images */
+ docker run -p 9002:9002 hotel
+ 
+ /* docker container list */
+ docker container ls
+ 
+ /* stop docker container */
+ docker stop containerID
+ 
+
+ 
+ /* clean maven errors */
+ .\mvnw clean install -U

@@ -3,19 +3,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>it.watchmefly.hotelroomapp.room.open-room</groupId>
-	<artifactId>room</artifactId>
+	<groupId>it.watchmefly.hotelroomapp.room.hotel</groupId>
+	<artifactId>hotel</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>open-room</name>
-	<description>Room Open Ms</description>
+	<name>hotel</name>
+	<description>Hotel Ms</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.6.RELEASE</version>
-		<relativePath/> 
+		<version>2.1.0.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
@@ -27,58 +27,34 @@
 
 	<dependencies>
 	
-	    <!-- Eureka client dependecy -->
+	   <!-- Eureka client dependecy -->
 	   <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-	
-	   <!-- Reactive Mongo -->
-	   <dependency>
-	       <groupId>org.springframework.boot</groupId>
-	       <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
-	   </dependency>
-	   
-	 <!--  <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver-reactivestreams</artifactId>
-        </dependency>
 		
-	  <dependency>
-			<groupId>io.reactivex.rxjava2</groupId>
-			<artifactId>rxjava</artifactId>
-		</dependency>
-
+		<!-- Reactive Mongo -->
 		<dependency>
-			<groupId>io.reactivex</groupId>
-			<artifactId>rxjava-reactive-streams</artifactId>
-		</dependency>  --> 
-		
-		<!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>-->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
 
-		<!--  <dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency> -->
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 		
 		<dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-		
-	<!-- <dependency>
-			<groupId>io.projectreactor</groupId>
-			<artifactId>reactor-test</artifactId>
-		</dependency>  -->	
-		
+        
 	</dependencies>
 
 	<build>
@@ -87,8 +63,8 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<finalName>hotel</finalName>
 		</plugins>
-		<finalName>open-room</finalName>
 	</build>
 	
 	<dependencyManagement>
@@ -102,6 +78,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 
 </project>
