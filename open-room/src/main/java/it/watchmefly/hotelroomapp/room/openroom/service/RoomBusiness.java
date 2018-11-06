@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import it.watchmefly.hotelroomapp.room.openroom.document.OpenRoom;
 import reactor.core.publisher.Mono;
 
-public interface RoomBusiness {
+public interface RoomBusiness extends RepositoryBusiness {
 	
 	// manage single room 
 	Mono<ResponseEntity<OpenRoom>> openRoom(OpenRoom room);

@@ -2,6 +2,7 @@ package it.watchmefly.hotelroomapp.room.openroom.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.watchmefly.hotelroomapp.room.openroom.config.BusinessAppConfig;
 import it.watchmefly.hotelroomapp.room.openroom.document.OpenRoom;
+import it.watchmefly.hotelroomapp.room.openroom.repository.OpenRoomRepository;
 import it.watchmefly.hotelroomapp.room.openroom.service.RoomBusiness;
 import reactor.core.publisher.Mono;
 
@@ -23,11 +25,15 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/room")
 public class RoomController {
 	
+	@Autowired
+	private OpenRoomRepository repository;
 	ApplicationContext ctx = new AnnotationConfigApplicationContext(BusinessAppConfig.class);
 	
 	@PostMapping
 	private Mono<ResponseEntity<OpenRoom>> insertRoom( @RequestBody OpenRoom room){	
-		return ctx.getBean(RoomBusiness.class).openRoom(room);
+		RoomBusiness business = this.ctx.getBean(RoomBusiness.class);
+		business.setRepository(this.repository);
+		return business.openRoom(room);
 	}
 
 	@GetMapping()
@@ -37,22 +43,30 @@ public class RoomController {
 		room.setHotelId(hotelId);
 		room.setReservationId(reservationId);
 		room.setRoomNumber(new Integer(roomNumber));
-		return ctx.getBean(RoomBusiness.class).getRoom(room);
+		RoomBusiness business = this.ctx.getBean(RoomBusiness.class);
+		business.setRepository(this.repository);
+		return business.getRoom(room);
 	}
 	
 	@GetMapping("/all")
 	private Mono<ResponseEntity<List<OpenRoom>>> findAllRooms() {
-		return ctx.getBean(RoomBusiness.class).getAllRooms();
+		RoomBusiness business = this.ctx.getBean(RoomBusiness.class);
+		business.setRepository(this.repository);
+		return business.getAllRooms();
 	}
 	
 	@PutMapping()
 	private Mono<ResponseEntity<List<OpenRoom>>> updateRoom(@RequestBody OpenRoom room){
-		return ctx.getBean(RoomBusiness.class).updateRoom(room);
+		RoomBusiness business = this.ctx.getBean(RoomBusiness.class);
+		business.setRepository(this.repository);
+		return business.updateRoom(room);
 	}
 	
 	@DeleteMapping()
 	private Mono<ResponseEntity<List<OpenRoom>>> closeRoom(@RequestBody OpenRoom room){
-		return ctx.getBean(RoomBusiness.class).closeRoom(room);
+		RoomBusiness business = this.ctx.getBean(RoomBusiness.class);
+		business.setRepository(this.repository);
+		return business.closeRoom(room);
 	}
 
 }

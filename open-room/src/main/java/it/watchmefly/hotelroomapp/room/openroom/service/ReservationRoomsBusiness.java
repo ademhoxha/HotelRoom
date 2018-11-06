@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import it.watchmefly.hotelroomapp.room.openroom.document.OpenRoom;
 import reactor.core.publisher.Mono;
 
-public interface ReservationRoomsBusiness {
+public interface ReservationRoomsBusiness extends RepositoryBusiness{
 		
 	// manage reservation rooms 
 	Mono<ResponseEntity<List<OpenRoom>>> getReservationRooms(String hotelId, String reservationId);

@@ -105,4 +105,14 @@ public class RoomBusinessImpl implements RoomBusiness {
 				.doOnError(x -> Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null)) );
 	}
 
+	@Override
+	public OpenRoomRepository getRepository() {
+		return this.repository;
+	}
+
+	@Override
+	public void setRepository(OpenRoomRepository repository) {
+		this.repository = repository;
+		
+	}
 }

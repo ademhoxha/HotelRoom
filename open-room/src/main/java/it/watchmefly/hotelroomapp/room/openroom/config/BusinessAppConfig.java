@@ -19,7 +19,7 @@ public class BusinessAppConfig {
 	}
 	
 	@Bean
-	public HotelRoomsBusiness rotelRoomsBusiness() {
+	public HotelRoomsBusiness hotelRoomsBusiness() {
 		return new HotelRoomsBusinessImpl();
 	}
 	

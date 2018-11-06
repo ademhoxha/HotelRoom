@@ -16,7 +16,6 @@ import reactor.core.publisher.Mono;
 @Service
 public class HotelRoomsBusinessImpl implements HotelRoomsBusiness {
 
-	/*@Autowired*/
 	private OpenRoomRepository repository;
 	private Calendar today;
 	private Function<OpenRoom, OpenRoom> closeRoomFunc = x -> {
@@ -51,6 +50,17 @@ public class HotelRoomsBusinessImpl implements HotelRoomsBusiness {
 				.flatMap(  list -> Mono.just(ResponseEntity.ok().body(list) ) )
 				.switchIfEmpty( Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).body(null) ) )
 				.doOnError(x -> Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null)) );
+	}
+
+	@Override
+	public OpenRoomRepository getRepository() {
+		return this.repository;
+	}
+
+	@Override
+	public void setRepository(OpenRoomRepository repository) {
+		this.repository = repository;
+		
 	}
 }
 
