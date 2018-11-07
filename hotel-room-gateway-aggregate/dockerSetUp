@@ -1,4 +1,4 @@
- http://192.168.99.100:9002/
+ http://192.168.99.100:9003/
  
   /* clean maven errors */
  .\mvnw clean install -U
@@ -7,13 +7,13 @@
  .\mvnw package 
  
  /* genera docker images  */
- docker build -f Dockerfile -t hotel .
+ docker build -f Dockerfile -t hotel-room-gateway-aggregate .
  
  /* verifica le docker images */
  docker images
  
  /*run docker images */
- docker run -p 9002:9002 hotel
+ docker run -p 9003:9003 hotel-room-gateway-aggregate
  
  /* docker container list */
  docker container ls
