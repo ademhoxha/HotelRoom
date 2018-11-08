@@ -7,10 +7,8 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
-
 
 import reactor.core.publisher.Mono;
 
@@ -26,11 +24,6 @@ public class HotelRoomController {
 		ParameterizedTypeReference<ResponseEntity<List<Object>>> typeRef = new ParameterizedTypeReference<ResponseEntity<List<Object>>>() {};
 		Mono<ResponseEntity<List<Object>>> hotelSearch =  webClientBuilder.build().get().uri("http://open-room/room/all").retrieve().bodyToMono(typeRef);		
 		return hotelSearch;
-	}
-	
-	@GetMapping("/test")
-	private String test() {
-		return "app is running";
 	}
 
 }
