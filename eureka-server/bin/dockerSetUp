@@ -1,0 +1,24 @@
+ http://192.168.99.100:8761/
+ 
+  /* clean maven errors */
+ .\mvnw clean install -U
+
+ /* genera il jar */
+ .\mvnw package 
+ 
+ /* genera docker images  */
+ docker build -f Dockerfile -t eureka-server .
+ 
+ /* verifica le docker images */
+ docker images
+ 
+ /*run docker images */
+ docker run -p 8761:8761 eureka-server
+ 
+ /* docker container list */
+ docker container ls
+ 
+ /* stop docker container */
+ docker stop containerID
+ 
+ 

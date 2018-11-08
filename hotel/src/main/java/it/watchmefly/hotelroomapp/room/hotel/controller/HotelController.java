@@ -20,7 +20,7 @@ import it.watchmefly.hotelroomapp.room.hotel.repository.HotelRepository;
 import it.watchmefly.hotelroomapp.room.hotel.service.HotelBusiness;
 import reactor.core.publisher.Mono;
 
-@RestController("hotel")
+@RestController("/hotel")
 public class HotelController {
 	
 	@Autowired
