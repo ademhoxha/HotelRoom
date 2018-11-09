@@ -8,6 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,10 +35,10 @@ public class ReservationRoomsController {
 	}
 
 	@DeleteMapping()
-	private Mono<ResponseEntity<List<OpenRoom>>> closeHotelRooms(@RequestParam("hotelId") String hotelId, @RequestParam("reservationId") String reservationId){
+	private Mono<ResponseEntity<List<OpenRoom>>> closeHotelRooms(@RequestBody OpenRoom room){
 		ReservationRoomsBusiness business = this.ctx.getBean(ReservationRoomsBusiness.class);
 		business.setRepository(this.repository);
-		return business.closeReservationRooms(hotelId, reservationId);
+		return business.closeReservationRooms(room.getHotelId(), room.getReservationId());
 	}
 
 }

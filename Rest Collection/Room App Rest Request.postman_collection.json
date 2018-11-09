@@ -1,0 +1,610 @@
+{
+	"info": {
+		"name": "Room App Rest Request",
+		"_postman_id": "482a789e-8d89-ecac-a4e5-60253b83adbe",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "room-ms",
+			"description": "",
+			"item": [
+				{
+					"name": "room",
+					"description": "",
+					"item": [
+						{
+							"name": "Get All Room",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:9001/room/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"room",
+										"all"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Open Room",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n        \"roomNumber\": 1001,\n        \"hotelId\": \"Cardinal\",\n        \"reservationId\": \"C103\",\n        \"password\": \"pswd\",\n        \"startDate\": \"2018-10-29T23:00:00.000+0000\"\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:9001/room",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"room"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Update Room",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n        \"roomNumber\": 1001,\n        \"hotelId\": \"Cardinal\",\n        \"reservationId\": \"C103\",\n        \"password\": \"update password\"\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:9001/room",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"room"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Room",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "roomNumber",
+										"value": "103",
+										"disabled": true
+									},
+									{
+										"key": "hotelId",
+										"value": "Cardinal",
+										"disabled": true
+									},
+									{
+										"key": "reservationId",
+										"value": "C001",
+										"disabled": true
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:9001/room?roomNumber=101&hotelId=Cardinal&reservationId=C001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"room"
+									],
+									"query": [
+										{
+											"key": "roomNumber",
+											"value": "101",
+											"equals": true
+										},
+										{
+											"key": "hotelId",
+											"value": "Cardinal",
+											"equals": true
+										},
+										{
+											"key": "reservationId",
+											"value": "C001",
+											"equals": true
+										}
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Close Room",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "roomNumber",
+										"value": "103",
+										"disabled": true
+									},
+									{
+										"key": "hotelId",
+										"value": "Cardinal",
+										"disabled": true
+									},
+									{
+										"key": "reservationId",
+										"value": "C001",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n        \"roomNumber\": 1001,\n        \"hotelId\": \"Cardinal\",\n        \"reservationId\": \"C103\"\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:9001/room",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"room"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "hotel",
+					"description": "",
+					"item": [
+						{
+							"name": "Get Hotel Rooms",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "roomNumber",
+										"value": "103",
+										"disabled": true
+									},
+									{
+										"key": "hotelId",
+										"value": "Cardinal",
+										"disabled": true
+									},
+									{
+										"key": "reservationId",
+										"value": "C001",
+										"disabled": true
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:9001/hotel/room?hotelId=Cardinal",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"hotel",
+										"room"
+									],
+									"query": [
+										{
+											"key": "hotelId",
+											"value": "Cardinal",
+											"equals": true
+										}
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Close Hotel Rooms",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "roomNumber",
+										"value": "103",
+										"disabled": true
+									},
+									{
+										"key": "hotelId",
+										"value": "Cardinal",
+										"disabled": true
+									},
+									{
+										"key": "reservationId",
+										"value": "C001",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"hotelId\": \"Cardinal1\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:9001/hotel/room",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"hotel",
+										"room"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "reservation",
+					"description": "",
+					"item": [
+						{
+							"name": "Get Reservation Rooms",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "roomNumber",
+										"value": "103",
+										"disabled": true
+									},
+									{
+										"key": "hotelId",
+										"value": "Cardinal",
+										"disabled": true
+									},
+									{
+										"key": "reservationId",
+										"value": "C001",
+										"disabled": true
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:9001/reservation/room?hotelId=Cardinal&reservationId=C001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"reservation",
+										"room"
+									],
+									"query": [
+										{
+											"key": "hotelId",
+											"value": "Cardinal",
+											"equals": true
+										},
+										{
+											"key": "reservationId",
+											"value": "C001",
+											"equals": true
+										}
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Close Room copy",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "roomNumber",
+										"value": "103",
+										"disabled": true
+									},
+									{
+										"key": "hotelId",
+										"value": "Cardinal",
+										"disabled": true
+									},
+									{
+										"key": "reservationId",
+										"value": "C001",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n        \"hotelId\": \"Cardinal\",\n        \"reservationId\": \"C103\"\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:9001/reservation/room",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"reservation",
+										"room"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "hotel-ms",
+			"description": "",
+			"item": [
+				{
+					"name": "hotel",
+					"description": "",
+					"item": [
+						{
+							"name": "New Hotel",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n        \"hotelId\": \"Cardinal\",\n        \"hotelName\": \"Cardinal St Peter Roma\"\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:9002/hotel",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"hotel"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Disable Hotel",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n        \"hotelId\": \"Cardinal\"\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:9002/hotel",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"hotel"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Hotels",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n        \"hotelId\": \"Cardinal\",\n        \"hotelName\": \"Cardinal St Peter Roma\"\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:9002/hotel/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"hotel",
+										"all"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Disable All Hotels",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n        \"hotelId\": \"Cardinal\",\n        \"hotelName\": \"Cardinal St Peter Roma\"\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:9002/hotel/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"hotel",
+										"all"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Get Hotel",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "hotelId",
+										"value": "Cardinal"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n        \"hotelId\": \"Cardinal\",\n        \"hotelName\": \"Cardinal St Peter Roma\"\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:9002/hotel/hotelId=Cardinal",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"hotel",
+										"hotelId=Cardinal"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Update Hotel",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n        \"hotelId\": \"Cardinal\",\n        \"hotelName\": \"Cardinal St Peter Roma Updated\"\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:9002/hotel",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"hotel"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "hotel address",
+					"description": "",
+					"item": [],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "reservation-ms",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "hotel-room-agg",
+			"description": "",
+			"item": []
+		}
+	]
+}
