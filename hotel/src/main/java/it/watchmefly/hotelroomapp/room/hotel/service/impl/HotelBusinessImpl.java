@@ -60,6 +60,7 @@ public class HotelBusinessImpl implements HotelBusiness {
 		return this.repository.findByHotelId(hoteld)
 				.filter(this.isValidHotelLambda::apply)
 				.collectList()
+				.filter(x -> x!= null && !x.isEmpty())
 				.flatMap( x -> Mono.just(ResponseEntity.ok().body(x)))
 				.switchIfEmpty( Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).body(null) ) )
 				.doOnError(x -> Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null)) );
@@ -80,6 +81,7 @@ public class HotelBusinessImpl implements HotelBusiness {
 	public Mono<ResponseEntity<List<Hotel>>> closeHotel(String hoteld) {
 		return this.repository.findByHotelId(hoteld)
 				.filter(this.isValidHotelLambda::apply)
+				.filter(x -> x!= null)
 				.map(this.closeHotelLambda::apply)
 				.flatMap(this.repository::save)
 				.collectList()
@@ -93,6 +95,7 @@ public class HotelBusinessImpl implements HotelBusiness {
 		return this.repository.findAll()
 				.filter(this.isValidHotelLambda::apply)
 				.collectList()
+				.filter(x -> x!= null && !x.isEmpty())
 				.flatMap( list -> Mono.just(ResponseEntity.ok().body(list) ) )
 				.switchIfEmpty( Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).body(null) ) )
 				.doOnError(x -> Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null)) );
