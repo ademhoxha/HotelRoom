@@ -63,7 +63,11 @@ public class RoomController {
 	}
 	
 	@DeleteMapping()
-	private Mono<ResponseEntity<List<OpenRoom>>> closeRoom(@RequestBody OpenRoom room){
+	private Mono<ResponseEntity<List<OpenRoom>>> closeRoom(@RequestParam("roomNumber") String roomNumber, @RequestParam("hotelId") String hotelId, @RequestParam("reservationId") String reservationId){
+		OpenRoom room = new OpenRoom();
+		room.setHotelId(hotelId);
+		room.setReservationId(reservationId);
+		room.setRoomNumber(new Integer(roomNumber));
 		RoomBusiness business = this.ctx.getBean(RoomBusiness.class);
 		business.setRepository(this.repository);
 		return business.closeRoom(room);

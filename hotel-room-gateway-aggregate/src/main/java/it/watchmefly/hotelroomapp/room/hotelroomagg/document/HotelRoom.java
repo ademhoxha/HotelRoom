@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class HotelRoom {
 	
 	private String hotelId;
+	private String reservationId;
 	private Integer roomNumber;
 	
 }
