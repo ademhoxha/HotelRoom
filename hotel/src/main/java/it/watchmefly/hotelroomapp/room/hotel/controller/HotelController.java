@@ -30,10 +30,10 @@ public class HotelController {
 	ApplicationContext ctx = new AnnotationConfigApplicationContext(BusinessAppConfig.class);
 	
 	@PostMapping
-	private Mono<ResponseEntity<Hotel>> insertHotel(@RequestBody Hotel hotel){
+	private Mono<ResponseEntity<Hotel>> insertHotel(@RequestBody Mono<Hotel> hotel){
 		HotelBusiness business = ctx.getBean(HotelBusiness.class);
 		business.setRepository(repository);
-		return business.insertHotel(hotel);
+		return hotel.flatMap( x -> business.insertHotel(x));
 	}
 	
 	@GetMapping
@@ -44,10 +44,10 @@ public class HotelController {
 	}
 	
 	@PutMapping
-	private Mono<ResponseEntity<List<Hotel>>> updateHotel(@RequestBody Hotel hotel){
+	private Mono<ResponseEntity<List<Hotel>>> updateHotel(@RequestBody Mono<Hotel> hotel){
 		HotelBusiness business = ctx.getBean(HotelBusiness.class);
 		business.setRepository(repository);
-		return business.updateHotel(hotel);
+		return hotel.flatMap( x -> business.updateHotel(x));
 	}
 	
 	@DeleteMapping

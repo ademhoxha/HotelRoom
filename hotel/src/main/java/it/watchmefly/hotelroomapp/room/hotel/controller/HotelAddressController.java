@@ -26,9 +26,9 @@ public class HotelAddressController {
 	ApplicationContext ctx = new AnnotationConfigApplicationContext(BusinessAppConfig.class);
 
 	@PostMapping
-	private Mono<ResponseEntity<List<Hotel>>> updateHotelAddress(@RequestBody Hotel hotel){
+	private Mono<ResponseEntity<List<Hotel>>> updateHotelAddress(@RequestBody Mono<Hotel> hotel){
 		HotelAddressBusiness business = ctx.getBean(HotelAddressBusiness.class);
 		business.setRepository(repository);
-		return business.updateHotelAddress(hotel);
+		return hotel.flatMap( x -> business.updateHotelAddress(x));
 	}
 }

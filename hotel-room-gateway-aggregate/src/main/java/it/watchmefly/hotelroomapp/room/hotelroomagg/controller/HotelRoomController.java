@@ -30,10 +30,10 @@ public class HotelRoomController {
 	ApplicationContext ctx = new AnnotationConfigApplicationContext(BusinessAppConfig.class);
 	
 	@PostMapping
-	 Mono<ResponseEntity<HotelRoom>> insertNewRoom(@RequestBody HotelRoom room) {
+	 Mono<ResponseEntity<HotelRoom>> insertNewRoom(@RequestBody Mono<HotelRoom> room) { // Mono is valid only for the body (obviously if consider ServerHttpRequest.bodyToMono())
 		HotelRoomBusiness business = ctx.getBean(HotelRoomBusiness.class);
 		business.setWebClientBuilder(webClientBuilder);
-		return business.openRoom(room);
+		return room.flatMap(x -> business.openRoom(x));
 	}
 	
 	@DeleteMapping

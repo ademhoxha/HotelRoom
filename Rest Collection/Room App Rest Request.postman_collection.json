@@ -1,25 +1,27 @@
 {
 	"info": {
+		"_postman_id": "d634528e-d3df-4a74-929e-c8c8b452db49",
 		"name": "Room App Rest Request",
-		"_postman_id": "482a789e-8d89-ecac-a4e5-60253b83adbe",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "room-ms",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "room",
-					"description": "",
+					"description": null,
 					"item": [
 						{
 							"name": "Get All Room",
 							"request": {
 								"method": "GET",
 								"header": [],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "http://localhost:9001/room/all",
 									"protocol": "http",
@@ -31,8 +33,7 @@
 										"room",
 										"all"
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						},
@@ -48,7 +49,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "    {\n        \"roomNumber\": 1001,\n        \"hotelId\": \"Cardinal\",\n        \"reservationId\": \"C103\",\n        \"password\": \"pswd\",\n        \"startDate\": \"2018-10-29T23:00:00.000+0000\"\n    }"
+									"raw": "    {\n        \"roomNumber\": 1002,\n        \"hotelId\": \"Cardinal\",\n        \"reservationId\": \"C103\",\n        \"password\": \"pswd\",\n        \"startDate\": \"2018-10-29T23:00:00.000+0000\"\n    }"
 								},
 								"url": {
 									"raw": "http://localhost:9001/room",
@@ -60,8 +61,7 @@
 									"path": [
 										"room"
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						},
@@ -89,8 +89,7 @@
 									"path": [
 										"room"
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						},
@@ -115,7 +114,10 @@
 										"disabled": true
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "http://localhost:9001/room?roomNumber=101&hotelId=Cardinal&reservationId=C001",
 									"protocol": "http",
@@ -129,22 +131,18 @@
 									"query": [
 										{
 											"key": "roomNumber",
-											"value": "101",
-											"equals": true
+											"value": "101"
 										},
 										{
 											"key": "hotelId",
-											"value": "Cardinal",
-											"equals": true
+											"value": "Cardinal"
 										},
 										{
 											"key": "reservationId",
-											"value": "C001",
-											"equals": true
+											"value": "C001"
 										}
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						},
@@ -178,7 +176,7 @@
 									"raw": "    {\n        \"roomNumber\": 1001,\n        \"hotelId\": \"Cardinal\",\n        \"reservationId\": \"C103\"\n    }"
 								},
 								"url": {
-									"raw": "http://localhost:9001/room",
+									"raw": "http://localhost:9001/room?roomNumber=101&hotelId=Cardinal&reservationId=C001",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -186,9 +184,22 @@
 									"port": "9001",
 									"path": [
 										"room"
+									],
+									"query": [
+										{
+											"key": "roomNumber",
+											"value": "101"
+										},
+										{
+											"key": "hotelId",
+											"value": "Cardinal"
+										},
+										{
+											"key": "reservationId",
+											"value": "C001"
+										}
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						}
@@ -197,7 +208,7 @@
 				},
 				{
 					"name": "hotel",
-					"description": "",
+					"description": null,
 					"item": [
 						{
 							"name": "Get Hotel Rooms",
@@ -220,7 +231,10 @@
 										"disabled": true
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "http://localhost:9001/hotel/room?hotelId=Cardinal",
 									"protocol": "http",
@@ -235,12 +249,10 @@
 									"query": [
 										{
 											"key": "hotelId",
-											"value": "Cardinal",
-											"equals": true
+											"value": "Cardinal"
 										}
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						},
@@ -274,7 +286,7 @@
 									"raw": "{\n   \"hotelId\": \"Cardinal1\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:9001/hotel/room",
+									"raw": "http://localhost:9001/hotel/room?hotelId=Cardinal",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -283,9 +295,14 @@
 									"path": [
 										"hotel",
 										"room"
+									],
+									"query": [
+										{
+											"key": "hotelId",
+											"value": "Cardinal"
+										}
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						}
@@ -294,7 +311,7 @@
 				},
 				{
 					"name": "reservation",
-					"description": "",
+					"description": null,
 					"item": [
 						{
 							"name": "Get Reservation Rooms",
@@ -317,7 +334,10 @@
 										"disabled": true
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "http://localhost:9001/reservation/room?hotelId=Cardinal&reservationId=C001",
 									"protocol": "http",
@@ -332,17 +352,14 @@
 									"query": [
 										{
 											"key": "hotelId",
-											"value": "Cardinal",
-											"equals": true
+											"value": "Cardinal"
 										},
 										{
 											"key": "reservationId",
-											"value": "C001",
-											"equals": true
+											"value": "C001"
 										}
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						},
@@ -376,7 +393,7 @@
 									"raw": "    {\n        \"hotelId\": \"Cardinal\",\n        \"reservationId\": \"C103\"\n    }"
 								},
 								"url": {
-									"raw": "http://localhost:9001/reservation/room",
+									"raw": "http://localhost:9001/reservation/room?hotelId=Cardinal&reservationId=C001",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -385,9 +402,18 @@
 									"path": [
 										"reservation",
 										"room"
+									],
+									"query": [
+										{
+											"key": "hotelId",
+											"value": "Cardinal"
+										},
+										{
+											"key": "reservationId",
+											"value": "C001"
+										}
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						}
@@ -398,11 +424,11 @@
 		},
 		{
 			"name": "hotel-ms",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "hotel",
-					"description": "",
+					"description": null,
 					"item": [
 						{
 							"name": "New Hotel",
@@ -416,7 +442,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "    {\n        \"hotelId\": \"Cardinal\",\n        \"hotelName\": \"Cardinal St Peter Roma\"\n    }"
+									"raw": "    {\n        \"hotelId\": \"Presidential\",\n        \"hotelName\": \"Presidential Hotel Praga\"\n    }"
 								},
 								"url": {
 									"raw": "http://localhost:9002/hotel",
@@ -428,8 +454,7 @@
 									"path": [
 										"hotel"
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						},
@@ -457,8 +482,7 @@
 									"path": [
 										"hotel"
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						},
@@ -487,8 +511,7 @@
 										"hotel",
 										"all"
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						},
@@ -504,7 +527,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "    {\n        \"hotelId\": \"Cardinal\",\n        \"hotelName\": \"Cardinal St Peter Roma\"\n    }"
+									"raw": " {}"
 								},
 								"url": {
 									"raw": "http://localhost:9002/hotel/all",
@@ -517,8 +540,7 @@
 										"hotel",
 										"all"
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						},
@@ -541,18 +563,22 @@
 									"raw": "    {\n        \"hotelId\": \"Cardinal\",\n        \"hotelName\": \"Cardinal St Peter Roma\"\n    }"
 								},
 								"url": {
-									"raw": "http://localhost:9002/hotel/hotelId=Cardinal",
+									"raw": "http://localhost:9002/hotel?hotelId=Cardinal",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "9002",
 									"path": [
-										"hotel",
-										"hotelId=Cardinal"
+										"hotel"
+									],
+									"query": [
+										{
+											"key": "hotelId",
+											"value": "Cardinal"
+										}
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						},
@@ -580,8 +606,7 @@
 									"path": [
 										"hotel"
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						}
@@ -590,7 +615,7 @@
 				},
 				{
 					"name": "hotel address",
-					"description": "",
+					"description": null,
 					"item": [],
 					"_postman_isSubFolder": true
 				}
@@ -598,13 +623,84 @@
 		},
 		{
 			"name": "reservation-ms",
-			"description": "",
+			"description": null,
 			"item": []
 		},
 		{
 			"name": "hotel-room-agg",
-			"description": "",
-			"item": []
+			"description": null,
+			"item": [
+				{
+					"name": "Open Agg Hotel Room",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"hotelId\": \"Cardinal\",\n        \"roomNumber\": 313,\n        \"reservationId\": \"C103\"\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:9003/hotelroom",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9003",
+							"path": [
+								"hotelroom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Close Agg Hotel Room",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"hotelId\": \"Cardinal\",\n        \"roomNumber\": 5583\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:9003/hotelroom?roomNumber=101&hotelId=Cardinal&reservationId=C001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9003",
+							"path": [
+								"hotelroom"
+							],
+							"query": [
+								{
+									"key": "roomNumber",
+									"value": "101"
+								},
+								{
+									"key": "hotelId",
+									"value": "Cardinal"
+								},
+								{
+									"key": "reservationId",
+									"value": "C001"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

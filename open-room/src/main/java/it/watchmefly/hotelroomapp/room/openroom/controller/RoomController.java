@@ -30,10 +30,10 @@ public class RoomController {
 	ApplicationContext ctx = new AnnotationConfigApplicationContext(BusinessAppConfig.class);
 	
 	@PostMapping
-	private Mono<ResponseEntity<OpenRoom>> insertRoom(@RequestBody OpenRoom room){	
+	private Mono<ResponseEntity<OpenRoom>> insertRoom(@RequestBody Mono<OpenRoom> room){	
 		RoomBusiness business = this.ctx.getBean(RoomBusiness.class);
 		business.setRepository(this.repository);
-		return business.openRoom(room);
+		return room.flatMap( x -> business.openRoom(x));
 	}
 
 	@GetMapping()
@@ -56,10 +56,10 @@ public class RoomController {
 	}
 	
 	@PutMapping()
-	private Mono<ResponseEntity<List<OpenRoom>>> updateRoom(@RequestBody OpenRoom room){
+	private Mono<ResponseEntity<List<OpenRoom>>> updateRoom(@RequestBody Mono<OpenRoom> room){
 		RoomBusiness business = this.ctx.getBean(RoomBusiness.class);
 		business.setRepository(this.repository);
-		return business.updateRoom(room);
+		return room.flatMap( x -> business.updateRoom(x));
 	}
 	
 	@DeleteMapping()
