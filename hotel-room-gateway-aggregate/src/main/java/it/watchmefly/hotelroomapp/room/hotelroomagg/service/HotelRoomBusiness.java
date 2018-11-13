@@ -8,11 +8,8 @@ import it.watchmefly.hotelroomapp.room.hotelroomagg.document.HotelRoom;
 import reactor.core.publisher.Mono;
 
 public interface HotelRoomBusiness extends WebClientBusiness {
-	
-	Mono<ResponseEntity<Object>>  openRoom(HotelRoom room);
-	
-	Mono<ResponseEntity<List<Object>>>  closeRoom(HotelRoom room);
-	
-	Mono<ResponseEntity<List<Object>>> findRoom(HotelRoom room);
-
+	Mono<ResponseEntity<HotelRoom>>  openRoom(HotelRoom room);
+	// this two methods are not needed in aggregate form
+	Mono<ResponseEntity<List<HotelRoom>>>  closeRoom(HotelRoom room);
+	Mono<ResponseEntity<List<HotelRoom>>> findRoom(HotelRoom room);
 }
