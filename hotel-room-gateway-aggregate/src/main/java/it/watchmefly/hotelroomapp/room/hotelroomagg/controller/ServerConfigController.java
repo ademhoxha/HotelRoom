@@ -9,15 +9,18 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("config")
-@RefreshScope // refresh configuration
+@RequestMapping("/config")
+@RefreshScope // to refresh use http://ip:port/actuator/refresh
 public class ServerConfigController {
-	
-	@Value("${config.version: Not Versioned}")
-	private String version;
 
 	@GetMapping("/version")
-	private Mono<String> getVersion(){ // mono is not needed at all
-		return Mono.just(this.version);
+	private Mono<String> getVersion(@Value("${config.version: Not Versioned}") String version){ // mono is not needed at all
+		return Mono.just(version);
 	}
+	
+	@GetMapping("/test")
+	private Mono<String> getTest(){ // mono is not needed at all
+		return Mono.just("Test");
+	}
+	
 }
