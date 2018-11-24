@@ -3,11 +3,11 @@ The application manages the Hotel Rooms in a Microservices Design. It is possibl
 All the application is designed to be **reactive**.
 
 ## Spring 5 Modules
-Spring Cloud Netflix Eureka (Client and Server)
-Spring Cloud Netflix Zuul
-Spring WebFlux
-Spring ReactiveMongoRepository
-Spring Coud Config Server
+- Spring Cloud Netflix Eureka (Client and Server)
+- Spring Cloud Netflix Zuul
+- Spring WebFlux
+- Spring ReactiveMongoRepository
+- Spring Coud Config Server
 
 ## Application Architecture
 Microservices Architecture: 
